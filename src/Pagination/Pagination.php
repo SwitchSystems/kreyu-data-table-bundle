@@ -80,7 +80,8 @@ class Pagination implements PaginationInterface
 
     public function getCurrentPageLastItemIndex(): int
     {
-        return $this->getCurrentPageFirstItemIndex() + $this->getCurrentPageItemCount() - 1;
+        $lastItemIndex = $this->getCurrentPageFirstItemIndex() + $this->getCurrentPageItemCount() - 1;
+        return $lastItemIndex > $this->getTotalItemCount() ? $this->getTotalItemCount() : $lastItemIndex;
     }
 
     private function isCurrentPageNumberOutOfRange(): bool
